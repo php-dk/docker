@@ -1,0 +1,18 @@
+{
+    "name": "toolsphp/docker",
+    "authors": [
+        {
+            "name": "dimajolkin",
+            "email": "dimajolkin@rambler.ru"
+        }
+    ],
+    "require": {
+        "toolsphp/types" : "^0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Toolsphp\\docker\\": "src",
+            "Toolsphp\\docker\\tests\\": "tests"
+        }
+    }
+}
