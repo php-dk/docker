@@ -1,9 +1,8 @@
-# docker
+<h1>docker</h1>
 
+<pre>
 $docker = new Docker();
-
 $containerService = $docker->getContainerService();
-
 //проверка на существование контейнера
 if (!$containerService->hasContainer('postgres')) {
       $container = $containerService->builder()
@@ -12,7 +11,6 @@ if (!$containerService->hasContainer('postgres')) {
            ->addValue(['/tmp/p1' => '/tmp/p1'])
            ->build();
 } 
-
 if (!$containerService->isRunning('postgres')) {
       $containerService->setName('postgres')
       $containerService->daemonStatus(true); 
@@ -20,4 +18,4 @@ if (!$containerService->isRunning('postgres')) {
 }
 
 $pdo = $container->getContainerDb('postgres')->getPDO();
-           
+</pre>           
