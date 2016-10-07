@@ -1,21 +1,26 @@
 <h1>docker</h1>
-
 <pre>
-$docker = new Docker();
-$containerService = $docker->getContainerService();
-//проверка на существование контейнера
-if (!$containerService->hasContainer('postgres')) {
-      $container = $containerService->builder()
-           ->setImage('postgres:9.4')
-           ->build('Dockerfile')
-           ->addValue(['/tmp/p1' => '/tmp/p1'])
-           ->build();
-} 
-if (!$containerService->isRunning('postgres')) {
-      $containerService->setName('postgres')
-      $containerService->daemonStatus(true); 
-      $containerService->run();
-}
+ - запуск контейнеров из PHP. 
+ Восзможное использование в тестах
+ </pre>
+<pre>
+$docker = Docker::getInstace();
+$docker->factory([
+    'postgres' => function(ContainerService $service) {
+         $compose =  $service->buildComposer('./docker-compose.yml');
+         return $compose->getContainerDb();
+    }
+]);
 
-$pdo = $container->getContainerDb('postgres')->getPDO();
+
+/** @var ContainerDb */
+$postgres = $docker->get('postgres');
+$pdo = $postgres->getPDO();
+
+$postgres->status(): bool;
+$postgres->start();
+$postgres->stop();
+$postgres->restart();
+
+
 </pre>           
