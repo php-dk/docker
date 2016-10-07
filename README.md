@@ -15,6 +15,9 @@ $docker->factory([
 
 /** @var ContainerDb */
 $postgres = $docker->get('postgres');
+if (!$postgres instanceof ContainerDb) {
+   //failed
+}
 $pdo = $postgres->getPDO();
 
 $postgres->status(): bool;
