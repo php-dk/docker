@@ -4,26 +4,27 @@
  Восзможное использование в тестах
  </pre>
 <pre>
-$docker = Docker::getInstace();
+use ToolsPhp\docker\Composer;
+use ToolsPhp\docker\containers\DbContainer;
+use ToolsPhp\docker\Docker;
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$docker = Docker::getInstance();
 $docker->factory([
-    'postgres' => function(ContainerService $service) {
-         $compose =  $service->buildComposer('./docker-compose.yml');
-         return $compose->getContainerDb();
+    'postgres' => function(Composer $composer) {
+        $composer->setPrototype(DbContainer::class);
+        /** @var DbContainer $container */
+        $container =  $composer->up(__DIR__ . '/docker-composer.yml');
+        $container->setParamConnect('pgsql', 'postgres','postgres','postgres');
+
+        return $container;
     }
 ]);
 
-
-/** @var ContainerDb */
+/** @var DbContainer $postgres */
 $postgres = $docker->get('postgres');
-if (!$postgres instanceof ContainerDb) {
-   //failed
-}
-$pdo = $postgres->getPDO();
-
-$postgres->status(): bool;
 $postgres->start();
-$postgres->stop();
-$postgres->restart();
 
-
+$pdo = $postgres->getPDO();
 </pre>           

@@ -7,6 +7,7 @@ use DockerCompose\Exception\DockerHostConnexionErrorException;
 use DockerCompose\Exception\DockerInstallationMissingException;
 use DockerCompose\Exception\NoSuchServiceException;
 
+use Exception;
 use mikehaertl\shellcommand\Command;
 
 class ComposeManager
@@ -205,6 +206,21 @@ class ComposeManager
         return $this->processResult($this->execute( new Command($command)));
     }
 
+    public function getContainerId(string $fileName)
+    {
+        
+        $command = "echo $(docker-compose -f '$fileName' ps -q);";
+        return $this->processResult($this->execute( new Command($command)));
+    }
+
+    public function getIp(string $fileName)
+    {
+        $id = $this->getContainerId($fileName);
+
+        $ip =  (string)$this->processResult($this->execute( new Command("echo $(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $id)")));
+        
+        return $ip ?: '127.0.0.1';
+    }
     /**
      * Process result with returned code and output
      *

@@ -1,3 +1,2 @@
 app:
   image: postgres:9.4
-  net: "host"

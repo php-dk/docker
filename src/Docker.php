@@ -46,9 +46,14 @@ class Docker
         
         $factory = $this->containers[$name];
         if (is_callable($factory)) {
-            return $factory($this->buildComposer());
+            $container =  $factory($this->buildComposer());
+            if (! $container instanceof Container) {
+                throw Exception::new('Factory return Container');
+            }
+
+            return $container;
         }
         
-        throw Exception::new('Error init factory', [$name]);
+        throw Exception::new('Error init factory');
     }
 }

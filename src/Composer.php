@@ -14,9 +14,11 @@ use ToolsPhp\docker\containers\Container;
 
 class Composer
 {
+    protected $class = Container::class;
+    
     public function up(string $fileName): Container 
     {
-        return Container::new($fileName);
+        return call_user_func_array([$this->class, 'new'], [$fileName]);
     }
 
 
@@ -24,6 +26,13 @@ class Composer
     {
         
     }
-    
-    
+
+    public function setPrototype(string $class): self
+    {
+        $this->class = $class;
+
+        return $this;
+    }
+
+
 }

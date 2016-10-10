@@ -68,9 +68,20 @@ class Container
         $this->getManager()->build([$this->fileName]);
     }
 
+    public function getId(): string 
+    {
+        return $this->getManager()->getContainerId($this->fileName);
+    }
+
+    public function getIp(): string
+    {
+        return $this->getManager()->getIp($this->fileName);
+    }
+
     public function getName(): string 
     {
         return $this->getManager()->ips([$this->fileName]);
     }
-    
+
+  
 }
