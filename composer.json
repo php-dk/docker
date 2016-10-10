@@ -7,12 +7,13 @@
         }
     ],
     "require": {
-        "toolsphp/types" : "^0.1"
+        "toolsphp/types" : "0.1",
+        "omauger/docker-compose-php": "@dev"
     },
     "autoload": {
         "psr-4": {
-            "Toolsphp\\docker\\": "src",
-            "Toolsphp\\docker\\tests\\": "tests"
+            "ToolsPhp\\docker\\": "src",
+            "ToolsPhp\\docker\\tests\\": "tests"
         }
     }
 }
