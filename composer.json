@@ -7,7 +7,6 @@
         }
     ],
     "require": {
-        "toolsphp/types" : "0.1",
         "omauger/docker-compose-php": "@dev"
     },
     "autoload": {

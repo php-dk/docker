@@ -4,7 +4,6 @@ namespace ToolsPhp\docker;
 
 use ToolsPhp\docker\containers\Container;
 use ToolsPhp\docker\exception\Exception;
-use Types\TArray;
 
 class Docker
 {

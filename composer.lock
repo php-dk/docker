@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "faed4f1341ee8717fd82a1f13c7d7b05",
-    "content-hash": "9f1f4233c18be6d4d88bc1fcc0bc2443",
+    "hash": "2044cb13133971bc0b88173d81156c69",
+    "content-hash": "140226374a00015b658e9097ed01cefd",
     "packages": [
         {
             "name": "mikehaertl/php-shellcommand",
@@ -73,54 +73,6 @@
             ],
             "description": "A Docker Compose PHP client",
             "time": "2016-04-21 13:41:27"
-        },
-        {
-            "name": "toolsphp/types",
-            "version": "0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/toolsphp/types.git",
-                "reference": "ec2d8f5df84b3e8c7f617fe52be942c383fb507e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/toolsphp/types/zipball/ec2d8f5df84b3e8c7f617fe52be942c383fb507e",
-                "reference": "ec2d8f5df84b3e8c7f617fe52be942c383fb507e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "5.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Types\\": "src",
-                    "Types\\tests\\": "tests"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dima",
-                    "email": "dimajolkin@gmail.com"
-                }
-            ],
-            "description": "toolsphp base types.",
-            "keywords": [
-                "types"
-            ],
-            "time": "2016-09-23 14:57:33"
         }
     ],
     "packages-dev": [],
