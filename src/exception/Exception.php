@@ -1,7 +1,6 @@
 <?php
 namespace ToolsPhp\docker\exception;
 
-use Types\TString;
 
 class Exception extends \Exception
 {

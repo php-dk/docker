@@ -21,5 +21,6 @@ $docker->factory([
 /** @var DbContainer $postgres */
 $postgres = $docker->get('postgres');
 $postgres->start();
+$postgres->status();
 
 $pdo = $postgres->getPDO();

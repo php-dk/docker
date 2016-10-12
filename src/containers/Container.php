@@ -68,6 +68,14 @@ class Container
         $this->getManager()->build([$this->fileName]);
     }
 
+    public function status(): bool
+    {
+        $ps = $this->getManager()->ps([$this->fileName]);
+        $name = $this->getName();
+
+        return strpos($ps, $name) !== false;
+    }
+
     public function getId(): string 
     {
         return $this->getManager()->getContainerId($this->fileName);
@@ -80,7 +88,8 @@ class Container
 
     public function getName(): string 
     {
-        return $this->getManager()->ips([$this->fileName]);
+        $name = $this->getManager()->ips([$this->fileName]);
+        return str_replace('/', '', explode(' ', $name)[0]);
     }
 
   
